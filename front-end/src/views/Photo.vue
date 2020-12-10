@@ -7,13 +7,15 @@
       <div class="photoInfo">
         <p class="photoTitle">{{photo.title}}</p>
         <p class="photoName">Submitted by: {{photo.user.firstName}} {{this.photo.user.lastName}}</p>
+        <p class="photoInfo">Description: {{photo.description}}</p>
       </div>
       <p class="photoDate">{{formatDate(photo.created)}}</p>
       <p v-if="error">{{error}}</p>
     </div>
     <div v-if="user" class="comment-section">
+      <p>Comments:</p>
       <div v-for="comment in comments" v-bind:key="comment._id" class="comments">
-        {{comment.thecomment}}
+        "{{comment.thecomment}}" -{{comment.user.firstName}} {{comment.user.lastName}} ({{formatDate(comment.created)}})
       </div>
       <textarea v-model="comment" placeholder="Comment"></textarea>
       <div @click="upload" class="submit-button">Submit Comment</div>
@@ -30,9 +32,6 @@ import axios from 'axios';
 import moment from 'moment';
 export default {
   name: 'photo',
-  components: {
-
-  },
   data() {
     return {
       photo: null,
@@ -41,9 +40,15 @@ export default {
       error: '',
     }
   },
-  created() {
+  async created() {
     this.getPhoto();
     this.getComments();
+    try {
+      let response = await axios.get('/api/users');
+      this.$root.$data.user = response.data.user;
+    } catch (error) {
+      this.$root.$data.user = null;
+    }
   },
   computed: {
     user() {
@@ -133,6 +138,10 @@ export default {
     display: block;
   }
   .comment-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 50px;
   }
   .submit-button {
