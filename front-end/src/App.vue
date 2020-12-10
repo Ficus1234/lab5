@@ -77,13 +77,13 @@ footer {
    bottom: 0;
    width: 100%;
    height: 50px;
-   background-color: #E74C3C;
+   background-color: lightgrey;
 }
 footer a {
-  color: white;
+  color: #E74C3C;
   text-decoration: none;
 }
 footer a:hover {
-  color: lightgrey;
+  color: white;
 }
 </style>
