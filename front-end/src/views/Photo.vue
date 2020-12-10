@@ -42,7 +42,6 @@ export default {
     }
   },
   created() {
-    console.log("created");
     this.getPhoto();
     this.getComments();
   },
@@ -55,7 +54,6 @@ export default {
     async deletePhoto (userPhoto) {
       try {
         await axios.delete("/api/photos/" + userPhoto._id);
-        console.log(userPhoto._id)
       } catch (error) {
         this.error = error.response.data.message;
       }
@@ -77,20 +75,18 @@ export default {
           photo: this.photo,
       });
       } catch (error) {
-        console.log(error);
+        this.error = error.response.data.message;
       }
       this.getComments();
       this.comment = "";
     },
     async getComments() {
-      console.log("working")
       try {
         let response = await axios.get("/api/comments/" + this.$route.params.id);
         this.comments = response.data;
       } catch (error) {
         this.error = error.response.data.message;
       }
-      console.log('working2')
     },
     formatDate(date) {
       if (moment(date).diff(Date.now(), 'days') < 15)
