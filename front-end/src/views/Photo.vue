@@ -17,7 +17,7 @@
       </div>
       <textarea v-model="comment" placeholder="Comment"></textarea>
       <div @click="upload" class="submit-button">Submit</div>
-      <div @click="deletePhoto(photo)" class="submit-button">Delete</div>
+      <div @click="deletePhoto(photo)" class="submit-button">Delete Photo</div>
     </div>
   </div>
 </template>
@@ -77,6 +77,7 @@ export default {
         console.log(error);
       }
       this.getComments();
+      this.comment = "";
     },
     async getComments() {
       console.log("working")
