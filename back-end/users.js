@@ -192,6 +192,7 @@ router.get('/', validUser, async (req, res) => {
   }
 });
 
+
 // logout
 router.delete("/", validUser, async (req, res) => {
   try {
