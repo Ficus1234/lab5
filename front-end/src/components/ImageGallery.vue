@@ -1,7 +1,6 @@
 <template>
 <div>
   <section class="image-gallery">
-
     <div class="image" v-for="photo in photos" v-bind:key="photo._id">
       <router-link :to="{ name: 'photo', params: { id: photo._id }}"><img :src="photo.path" /></router-link>
       <div class="photoInfo">
@@ -32,9 +31,6 @@ export default {
 }
 </script>
 <style scoped>
-.nope {
-  display: none;
-}
 .photoInfo {
   display: flex;
   justify-content: space-between;

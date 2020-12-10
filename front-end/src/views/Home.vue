@@ -1,6 +1,7 @@
 <template>
 <div class="home">
-  <image-gallery :photos="photos" />
+  <div class="some-space"></div>
+  <image-gallery class="the-photos" :photos="photos" />
   <p v-if="error">{{error}}</p>
 </div>
 </template>
@@ -34,3 +35,8 @@ export default {
   }
 }
 </script>
+<style>
+  .some-space {
+    height: 50px;
+  }
+</style>

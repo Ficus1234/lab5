@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="page-1">
     <div v-if="photo" class="single-photo">
       <div class="image-box">
         <img id="selected-photo"  :src="this.photo.path" />
@@ -16,8 +16,11 @@
         {{comment.thecomment}}
       </div>
       <textarea v-model="comment" placeholder="Comment"></textarea>
-      <div @click="upload" class="submit-button">Submit</div>
-      <div @click="deletePhoto(photo)" class="submit-button">Delete Photo</div>
+      <div @click="upload" class="submit-button">Submit Comment</div>
+      <router-link :to="{ name: 'Home'}">
+        <div @click="deletePhoto(photo)" class="submit-button">Delete Photo</div>
+      </router-link>
+
     </div>
   </div>
 </template>
@@ -99,7 +102,18 @@ export default {
 }
 </script>
 <style scoped>
-  .page {
+  .comment-section a{
+    text-decoration: none;
+    color: black;
+  }
+  .comment-section a:hover {
+    color: lightgrey;
+  }
+  .submit-button:hover {
+    background: black;
+    color: lightgrey;
+  }
+  .page-1 {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -115,7 +129,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    max-width: 90vw;
+    margin-top: 120px;
+    width: 100%;
   }
   #selected-photo {
     width: 100%;

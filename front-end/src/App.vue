@@ -8,6 +8,9 @@
       </nav>
     </header>
     <router-view />
+    <footer>
+      <a href="https://github.com/Ficus1234/lab5.git">GitHub</a>
+    </footer>
   </div>
 </template>
 
@@ -20,7 +23,7 @@ body {
   font-family: 'Work Sans', sans-serif;
   font-weight: 300;
   font-size: 13pt;
-  margin: 0px 200px;
+  margin: 0px 50px;
 }
 
 #header {
@@ -63,5 +66,24 @@ h2 {
 
 .pure-button-primary {
   background-color: #277E8E;
+}
+
+footer {
+   position: fixed;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height: 50px;
+   background-color: #E74C3C;
+}
+footer a {
+  color: white;
+  text-decoration: none;
+}
+footer a:hover {
+  color: lightgrey;
 }
 </style>
